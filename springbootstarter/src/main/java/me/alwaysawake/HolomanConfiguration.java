@@ -10,11 +10,11 @@ import org.springframework.context.annotation.Configuration;
 public class HolomanConfiguration {
 
     @Bean
-    @ConditionalOnMissingBean // Holoman의 빈이 존재하지 않으면 아래 내용의 Bean을 등록해라
+    @ConditionalOnMissingBean // Holoman의 빈이 존재하지 않으면(@ComponentScan을 통해서) 아래 내용의 Bean을 등록한다.
     public Holoman holoman(HolomanProperties properties) {
         Holoman holoman = new Holoman();
         holoman.setHowLong(properties.getHowLong());
-        holoman.setName("alwaysawake");
+        holoman.setName(properties.getName());
         return holoman;
     }
 }
